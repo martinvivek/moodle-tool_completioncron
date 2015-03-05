@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>A Better Moodle Completion Cron Plugin by joshwillcock</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>A Better Moodle Completion Cron Plugin</h1>
+        <h2>Moodle as standard every hour slows down due to completions. This plugin offers a simple solution for that.</h2>
+        <a href="https://github.com/joshwillcock/Moodle-Completion-Cron-Tool" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a id="moodle-completions-cron-admin-tool" class="anchor" href="#moodle-completions-cron-admin-tool" aria-hidden="true"><span class="octicon octicon-link"></span></a>Moodle Completions Cron Admin Tool</h1>
+
+<h2>
+<a id="general" class="anchor" href="#general" aria-hidden="true"><span class="octicon octicon-link"></span></a>General</h2>
+
+<p>This plugin was created by Josh Willcock (@Josh_Willcock) to resolve speed issues on high usage sites.
+This plugin when installed creates two separate scheduled tasks. Moodle's standard completion cron does three things:</p>
+
+<ul>
+<li>Locate active participants and add the users without completion.</li>
+<li>Update all criteria completions</li>
+<li>Update all completions</li>
+</ul>
+
+<p>Moodle can handle the updating process very quickly (usually under a few seconds). However locating active participants involves checking every user against every enrolment method, this can take a very long time. For a single Moodle installation with lots of users it can easily take over an hour. Unfortunately this query is very complicated and there is not an easy solution to resolving this. So this is where this plugin comes in.</p>
+
+<p>This plugin when installed will automatically disable the original Moodle plugin (it will re-enable it if you ever decide to uninstall this). This plugin will then update the all criteria completions and all completions every minute (this causes very little strain on the database). A second task is also created which holds the active participants aspect, this is set to run once a day at a random time between 00:00 and 5:59.</p>
+
+<h2>
+<a id="benefits" class="anchor" href="#benefits" aria-hidden="true"><span class="octicon octicon-link"></span></a>Benefits</h2>
+
+<p>This plugin will dramatically increase the speed of your Moodle installation and reduce slow down due to database resources. All functionality is still there. Automatically generating a random time (outside of 'standard hours') ensures that if you run multiple Moodle installations from the same database server you are less likely to run into issues with them firing at identical times. This random time is made at installation so you can move it to suit your needs anytime from the scheduled tasks area in site administration.</p>
+
+<h2>
+<a id="limitations" class="anchor" href="#limitations" aria-hidden="true"><span class="octicon octicon-link"></span></a>Limitations</h2>
+
+<p>What this plugin does is it stops the adding active user task from running every hour, this means that if you add a user to a course with completion, the completion information will not be created until the next time this runs (realistically overnight). This may cause a slight delay, this will not cause any issues however the user may not see they are required to do this until after this time. A simple way to prevent this would be to enrol the user the day before they are required to begin.</p>
+
+<h2>
+<a id="contact" class="anchor" href="#contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contact</h2>
+
+<p>Any questions, advice or feedback?
+Please feel free to get in contact at:
+Email: me [@] joshwillcock.co.uk
+Twitter: <a href="https://twitter.com/josh_willcock">Josh_Willcock</a>
+Website: </p>
+
+<h2>
+<a id="contributors" class="anchor" href="#contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributors</h2>
+
+<ul>
+<li>Josh Willcock</li>
+<li>Jerrett Fowler</li>
+</ul>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/joshwillcock/Moodle-Completion-Cron-Tool/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/joshwillcock/Moodle-Completion-Cron-Tool/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/joshwillcock/Moodle-Completion-Cron-Tool"></a> is maintained by <a href="https://github.com/joshwillcock">joshwillcock</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
