@@ -1,0 +1,2 @@
+# Moodle-Completion-Cron-Tool
+By default Moodle runs every hour Completions (updates) and checks if any users have been enrolled on completion courses. This puts a large strain on the database and can take over an hour. This plugin replaces the original Moodle Cron and checks completion changes every minute but only for new users daily. This dramatically improves the performance of Moodle for installations with large user bases.
