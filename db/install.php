@@ -22,7 +22,10 @@
  */
 function xmldb_tool_completioncron_install(){
     global $DB;
-    $sql ="UPDATE {task_scheduled} SET `disabled`='1' WHERE `classname`  LIKE '%completion_cron_task%'";
-    $DB->execute($sql);
+    $activeTask = $DB->get_record('task_scheduled', array('classname'=>'\core\task\completion_cron_task'));
+    $disableTask = new stdClass();
+    $disableTask->id = $activeTask->id;
+    $disableTask->disabled = 0;
+    $DB->update_record('task_scheduled', $disableTask);
   echo '<div class="alert alert-success">Disabled Moodle Core Completions Cron & Enabled Split Crons</div>';
 }
